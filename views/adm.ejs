@@ -1,0 +1,147 @@
+<%- include('partials/header') %>
+
+<div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="admin-profile">
+            <img src="/img/admin/admin-avatar.png" alt="Admin">
+            <h3>Administrador</h3>
+        </div>
+        <nav class="admin-nav">
+            <button class="nav-btn active" data-section="productos">
+                <i class="fas fa-box"></i>Productos
+            </button>
+            <button class="nav-btn" data-section="recetas">
+                <i class="fas fa-utensils"></i>Recetas
+            </button>
+            <button class="nav-btn" data-section="catalogo">
+                <i class="fas fa-book"></i>Catálogo
+            </button>
+            <button class="nav-btn" data-section="password">
+                <i class="fas fa-key"></i>Cambiar Contraseña
+            </button>
+            <button class="nav-btn logout">
+                <i class="fas fa-sign-out-alt"></i>Cerrar Sesión
+            </button>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-content">
+        <!-- Productos Section -->
+        <section class="content-section active" id="productos">
+            <div class="section-header">
+                <h2>Gestión de Productos</h2>
+                <button class="add-btn" id="addProductBtn">
+                    <i class="fas fa-plus"></i> Nuevo Producto
+                </button>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchProductos" placeholder="Buscar productos...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="items-grid" id="productosGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Recetas Section -->
+        <section class="content-section" id="recetas">
+            <div class="section-header">
+                <h2>Gestión de Recetas</h2>
+                <button class="add-btn" id="addRecetaBtn">
+                    <i class="fas fa-plus"></i> Nueva Receta
+                </button>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchRecetas" placeholder="Buscar recetas...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="items-grid" id="recetasGrid">
+                <!-- Recipes will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Catalogo Section -->
+        <section class="content-section" id="catalogo">
+            <div class="section-header">
+                <h2>Gestión de Catálogo</h2>
+            </div>
+            <div class="catalog-upload">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-file-pdf"></i>
+                    <p>Arrastra y suelta el nuevo catálogo PDF aquí o</p>
+                    <label class="upload-btn">
+                        Seleccionar Archivo
+                        <input type="file" id="catalogFile" accept=".pdf" hidden>
+                    </label>
+                </div>
+                <div class="current-catalog">
+                    <h3>Catálogo Actual</h3>
+                    <a href="/catalogo.pdf" target="_blank" class="catalog-link">
+                        <i class="fas fa-file-pdf"></i>
+                        Ver Catálogo Actual
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Password Section -->
+        <section class="content-section" id="password">
+            <div class="section-header">
+                <h2>Cambiar Contraseña</h2>
+            </div>
+            <form class="password-form" id="passwordForm">
+                <div class="form-group">
+                    <label>Contraseña Actual</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>Nueva Contraseña</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirmar Nueva Contraseña</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Guardar Cambios
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Modal for adding/editing items -->
+    <div class="modal" id="itemModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Nuevo Item</h2>
+            <form id="itemForm">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="itemName" required>
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea id="itemDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Imagen</label>
+                    <input type="file" id="itemImage" accept="image/*">
+                </div>
+                <div class="form-group" id="priceGroup">
+                    <label>Precio</label>
+                    <input type="number" id="itemPrice" step="0.01">
+                </div>
+                <div class="form-group" id="videoGroup">
+                    <label>URL del Video</label>
+                    <input type="url" id="itemVideo">
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="./js/adm.js"></script>

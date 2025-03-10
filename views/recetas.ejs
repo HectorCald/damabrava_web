@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<!-- ===== Sección Principal de Recetas ===== -->
+<section class="recetas-page">
+    <div class="recetas-header">
+        <h1>Nuestras Recetas</h1>
+        <p>Explora deliciosas recetas preparadas con nuestros condimentos</p>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar recetas...">
+            <div class="categorias-filter">
+                <button class="filter-btn active" data-category="todas">Todas</button>
+                <button class="filter-btn" data-category="carnes">Carnes</button>
+                <button class="filter-btn" data-category="pastas">Pastas</button>
+                <button class="filter-btn" data-category="pescados">Pescados</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="recetas-grid" id="recetasContainer">
+        <!-- Las recetas se generarán dinámicamente con JavaScript -->
+    </div>
+</section>
+
+<%- include('partials/footer') %>

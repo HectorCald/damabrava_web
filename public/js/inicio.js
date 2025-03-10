@@ -1,0 +1,166 @@
+document.getElementById('contactBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const footer = document.querySelector('.footer');
+    footer.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Efecto parallax en el fondo
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+});
+
+// Animación al hacer hover en los botones
+const buttons = document.querySelectorAll('.hero-btn');
+buttons.forEach(button => {
+    button.addEventListener('mouseover', function() {
+        this.style.transform = 'translateY(-3px)';
+    });
+    
+    button.addEventListener('mouseout', function() {
+        this.style.transform = 'translateY(0)';
+    });
+});
+
+
+/* ... Scripts existentes del hero ... */
+
+/* ... Scripts existentes del hero ... */
+
+/* ===== Scripts de la sección de productos ===== */
+document.addEventListener('DOMContentLoaded', () => {
+    // Animación de entrada para las tarjetas de productos
+    const productCards = document.querySelectorAll('.producto-card');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    productCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s ease';
+        observer.observe(card);
+    });
+});
+/* ===== Scripts de la sección de recetas ===== */
+document.addEventListener('DOMContentLoaded', () => {
+    // Animación de entrada para las tarjetas de recetas
+    const recetaCards = document.querySelectorAll('.receta-card');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    recetaCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s ease';
+        card.style.transitionDelay = `${index * 0.2}s`;
+        observer.observe(card);
+    });
+});
+/* ===== Scripts de la sección de nosotros ===== */
+document.addEventListener('DOMContentLoaded', () => {
+    const nosotrosContent = document.querySelector('.nosotros-content');
+    const nosotrosImage = document.querySelector('.nosotros-image');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateX(0)';
+            }
+        });
+    }, observerOptions);
+
+    if (nosotrosContent && nosotrosImage) {
+        nosotrosContent.style.transition = 'all 0.8s ease';
+        nosotrosImage.style.transition = 'all 0.8s ease';
+        
+        observer.observe(nosotrosContent);
+        observer.observe(nosotrosImage);
+    }
+});
+/* ===== Scripts de la sección de redes sociales ===== */
+document.addEventListener('DOMContentLoaded', () => {
+    const socialCards = document.querySelectorAll('.social-card');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    socialCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s ease';
+        card.style.transitionDelay = `${index * 0.2}s`;
+        observer.observe(card);
+    });
+});
+/* ===== Scripts de la sección de consejos de cocina ===== */
+document.addEventListener('DOMContentLoaded', () => {
+    const tips = [
+        "Agrega las hierbas secas al principio de la cocción y las frescas al final para obtener el mejor sabor.",
+        "Para realzar el sabor de las especias, tuéstalas ligeramente antes de usarlas.",
+        "Guarda tus condimentos en un lugar fresco y oscuro para mantener su frescura.",
+        "Usa una pizca de pimentón para dar color y sabor a tus sopas y guisos.",
+        "Las hierbas frescas picadas pueden congelarse en cubitos de aceite de oliva.",
+        "Mezcla diferentes tipos de pimientas para crear perfiles de sabor únicos.",
+        "El orégano combina perfectamente con tomates y platos mediterráneos.",
+        "Para un aroma más intenso, tritura las hierbas secas entre tus manos antes de usarlas."
+    ];
+
+    const tipText = document.getElementById('tipText');
+    const tipCard = document.querySelector('.tip-card');
+    let currentTip = 0;
+
+    function changeTip() {
+        tipCard.classList.remove('active');
+        
+        setTimeout(() => {
+            tipText.textContent = tips[currentTip];
+            currentTip = (currentTip + 1) % tips.length;
+            tipCard.classList.add('active');
+        }, 500);
+    }
+
+    // Cambiar el consejo cada 6 segundos
+    setInterval(changeTip, 6000);
+});
