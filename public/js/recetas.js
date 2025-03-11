@@ -1,3 +1,19 @@
+/**
+ * ====================================
+ * PÁGINA DE RECETAS - CONTROLADOR
+ * ====================================
+ * 
+ * Este archivo maneja la funcionalidad de la página de recetas, incluyendo:
+ * - Carga dinámica de recetas desde la API
+ * - Sistema de búsqueda y filtrado
+ * - Visualización de recetas con animaciones
+ */
+
+/**
+ * ====================================
+ * 1. INICIALIZACIÓN Y VARIABLES GLOBALES
+ * ====================================
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const recetasContainer = document.getElementById('recetasContainer');
     const searchInput = document.getElementById('searchInput');
@@ -5,7 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let recetasData = [];
     let categoriaActual = 'todas';
 
-    // Función para cargar recetas desde la base de datos
+    /**
+     * ====================================
+     * 2. CARGA DE RECETAS
+     * ====================================
+     */
     async function cargarRecetas() {
         try {
             const response = await fetch('/api/recetas');
@@ -16,6 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /**
+     * ====================================
+     * 3. RENDERIZADO DE RECETAS
+     * ====================================
+     */
     function mostrarRecetas(recetas) {
         recetasContainer.innerHTML = '';
         recetas.forEach((receta, index) => {
@@ -45,6 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /**
+     * ====================================
+     * 4. SISTEMA DE FILTRADO
+     * ====================================
+     */
     function filtrarRecetas() {
         const busqueda = searchInput.value.toLowerCase();
         const recetasFiltradas = recetasData.filter(receta => {
@@ -54,9 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarRecetas(recetasFiltradas);
     }
 
-    // Event Listeners
+    /**
+     * ====================================
+     * 5. EVENTOS Y LISTENERS
+     * ====================================
+     */
+    // Búsqueda en tiempo real
     searchInput.addEventListener('input', filtrarRecetas);
 
+    // Filtrado por categorías
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -66,6 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Cargar recetas al iniciar
+    // Inicialización
     cargarRecetas();
 });

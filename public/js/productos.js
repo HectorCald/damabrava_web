@@ -1,3 +1,20 @@
+/**
+ * ====================================
+ * PÁGINA DE PRODUCTOS - CONTROLADOR
+ * ====================================
+ * 
+ * Este archivo maneja la funcionalidad de la página de productos, incluyendo:
+ * - Carga dinámica de productos desde la API
+ * - Sistema de filtrado y búsqueda
+ * - Gestión de cantidades y gramajes
+ * - Interacción con el carrito de compras
+ */
+
+/**
+ * ====================================
+ * 1. INICIALIZACIÓN Y VARIABLES GLOBALES
+ * ====================================
+ */
 document.addEventListener('DOMContentLoaded', async () => {
     const productosContainer = document.getElementById('productosContainer');
     const searchInput = document.getElementById('searchInput');
@@ -5,7 +22,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     let categoriaActual = 'todos';
     let productos = [];
 
-    // Función para cargar productos desde la API
+    /**
+     * ====================================
+     * 2. CARGA DE PRODUCTOS
+     * ====================================
+     */
     async function cargarProductos() {
         try {
             const response = await fetch('/api/productos');
@@ -16,6 +37,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    /**
+     * ====================================
+     * 3. RENDERIZADO DE PRODUCTOS
+     * ====================================
+     */
     function mostrarProductos(productos) {
         productosContainer.innerHTML = '';
         productos.forEach((producto, index) => {
@@ -58,10 +84,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             productosContainer.innerHTML += card;
         });
 
-        // Inicializar eventos de los botones de gramaje
         inicializarEventosProductos();
     }
 
+    /**
+     * ====================================
+     * 4. GESTIÓN DE EVENTOS
+     * ====================================
+     */
     function inicializarEventosProductos() {
         document.querySelectorAll('.producto-card').forEach(card => {
             const gramajeBtns = card.querySelectorAll('.gramaje-btn');
@@ -71,6 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const plusBtn = card.querySelector('.plus');
             let quantity = 1;
 
+            // Eventos de gramaje
             gramajeBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     gramajeBtns.forEach(b => b.classList.remove('active'));
@@ -79,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
             });
 
-            // Manejadores de cantidad
+            // Eventos de cantidad
             minusBtn.addEventListener('click', () => {
                 if (quantity > 1) {
                     quantity--;
@@ -96,6 +127,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    /**
+     * ====================================
+     * 5. SISTEMA DE FILTRADO
+     * ====================================
+     */
     function filtrarProductos() {
         const busqueda = searchInput.value.toLowerCase();
         const productosFiltrados = productos.filter(producto => {
@@ -105,8 +141,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         mostrarProductos(productosFiltrados);
     }
 
+    // Eventos de búsqueda
     searchInput.addEventListener('input', filtrarProductos);
 
-    // Cargar productos al iniciar
+    // Inicialización
     await cargarProductos();
 });

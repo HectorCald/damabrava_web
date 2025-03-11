@@ -1,10 +1,26 @@
+/**
+ * ====================================
+ * PÁGINA DE INICIO - CONTROLADOR PRINCIPAL
+ * ====================================
+ * 
+ * Este archivo maneja todas las interacciones y animaciones de la página principal,
+ * incluyendo efectos visuales, carga dinámica de contenido y animaciones de elementos.
+ */
+
+/**
+ * ====================================
+ * 1. NAVEGACIÓN Y EFECTOS BÁSICOS
+ * ====================================
+ */
+
+// Scroll suave al footer
 document.getElementById('contactBtn').addEventListener('click', function(e) {
     e.preventDefault();
     const footer = document.querySelector('.footer');
     footer.scrollIntoView({ behavior: 'smooth' });
 });
 
-// Efecto parallax en el fondo
+// Efecto parallax en el hero
 window.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
@@ -12,7 +28,7 @@ window.addEventListener('scroll', function() {
     cargarProductosPreview();
 });
 
-// Animación al hacer hover en los botones
+// Animaciones de botones
 const buttons = document.querySelectorAll('.hero-btn');
 buttons.forEach(button => {
     button.addEventListener('mouseover', function() {
@@ -24,9 +40,14 @@ buttons.forEach(button => {
     });
 });
 
-/* ===== Scripts de la sección de productos ===== */
+/**
+ * ====================================
+ * 2. ANIMACIONES DE SECCIONES
+ * ====================================
+ */
+
+/* ----- Animación Productos ----- */
 document.addEventListener('DOMContentLoaded', () => {
-    // Animación de entrada para las tarjetas de productos
     const productCards = document.querySelectorAll('.producto-card');
     
     const observerOptions = {
@@ -50,9 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 });
-/* ===== Scripts de la sección de recetas ===== */
+
+/* ----- Animación Recetas ----- */
 document.addEventListener('DOMContentLoaded', () => {
-    // Animación de entrada para las tarjetas de recetas
     const recetaCards = document.querySelectorAll('.receta-card');
     
     const observerOptions = {
@@ -77,7 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 });
-/* ===== Scripts de la sección de nosotros ===== */
+
+/* ----- Animación Nosotros ----- */
 document.addEventListener('DOMContentLoaded', () => {
     const nosotrosContent = document.querySelector('.nosotros-content');
     const nosotrosImage = document.querySelector('.nosotros-image');
@@ -104,7 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(nosotrosImage);
     }
 });
-/* ===== Scripts de la sección de redes sociales ===== */
+
+/* ----- Animación Redes Sociales ----- */
 document.addEventListener('DOMContentLoaded', () => {
     const socialCards = document.querySelectorAll('.social-card');
     
@@ -130,7 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 });
-/* ===== Scripts de la sección de consejos de cocina ===== */
+
+/**
+ * ====================================
+ * 3. SISTEMA DE CONSEJOS DE COCINA
+ * ====================================
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const tips = [
         "Agrega las hierbas secas al principio de la cocción y las frescas al final para obtener el mejor sabor.",
@@ -157,10 +185,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 
-    // Cambiar el consejo cada 6 segundos
     setInterval(changeTip, 6000);
 });
-// Agregar esta función al inicio del archivo
+
+/**
+ * ====================================
+ * 4. CARGA DINÁMICA DE CONTENIDO
+ * ====================================
+ */
+
+/* ----- Carga de Productos ----- */
 async function cargarProductosPreview() {
     try {
         const response = await fetch('/api/productos/preview');
@@ -170,7 +204,6 @@ async function cargarProductosPreview() {
         productosGrid.innerHTML = '';
 
         productos.forEach(producto => {
-            // Tomamos el primer gramaje para mostrar (si existe)
             const primerGramaje = producto.gramajes[0] || { peso: 'N/A', precio: '0' };
             
             const productoHTML = `
@@ -189,7 +222,8 @@ async function cargarProductosPreview() {
         console.error('Error al cargar productos:', error);
     }
 }
-// Agregar esta función al inicio del archivo
+
+/* ----- Carga de Recetas ----- */
 async function cargarRecetasPreview() {
     try {
         const response = await fetch('/api/recetas/preview');
@@ -225,8 +259,11 @@ async function cargarRecetasPreview() {
     }
 }
 
-// Agregar al evento DOMContentLoaded existente
+/**
+ * ====================================
+ * 5. INICIALIZACIÓN
+ * ====================================
+ */
 document.addEventListener('DOMContentLoaded', () => {
     cargarRecetasPreview();
-    // ... resto del código existente ...
 });

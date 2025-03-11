@@ -1,4 +1,17 @@
-/* ===== Animaciones de Scroll ===== */
+/**
+ * ====================================
+ * PÁGINA NOSOTROS - CONTROLADOR
+ * ====================================
+ * 
+ * Este archivo maneja las animaciones y efectos visuales de la página "Nosotros",
+ * incluyendo efectos de scroll, parallax y animaciones de hover.
+ */
+
+/**
+ * ====================================
+ * 1. ANIMACIONES DE SCROLL
+ * ====================================
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
         threshold: 0.1,
@@ -25,15 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/* ===== Efecto Parallax en Header ===== */
+/**
+ * ====================================
+ * 2. EFECTO PARALLAX
+ * ====================================
+ */
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.nosotros-header');
     const scrolled = window.pageYOffset;
     header.style.backgroundPositionY = scrolled * 0.5 + 'px';
 });
 
-/* ===== Animaciones de Hover en Valores ===== */
+/**
+ * ====================================
+ * 3. ANIMACIONES DE VALORES
+ * ====================================
+ */
 document.querySelectorAll('.valor-card').forEach(card => {
+    // Efecto de hover en entrada
     card.addEventListener('mouseenter', () => {
         const icon = card.querySelector('i');
         if (icon) {
@@ -42,6 +64,7 @@ document.querySelectorAll('.valor-card').forEach(card => {
         }
     });
 
+    // Efecto de hover en salida
     card.addEventListener('mouseleave', () => {
         const icon = card.querySelector('i');
         if (icon) {
