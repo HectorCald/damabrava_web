@@ -1,4 +1,5 @@
-/* ======footer=====*/
+/* ====== ESTILOS PRINCIPALES DEL FOOTER ====== */
+/* Contenedor principal del footer con fondo oscuro y configuración básica */
 .footer {
     background-color: #1a1a1a;
     color: #fff;
@@ -10,6 +11,8 @@
     box-sizing: border-box;
 }
 
+/* ====== ESTRUCTURA DEL CONTENIDO ====== */
+/* Grid responsivo para organizar las secciones del footer */
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -22,15 +25,20 @@
     animation: fadeInUp 0.6s ease forwards;
 }
 
+/* ====== SECCIONES INDIVIDUALES DEL FOOTER ====== */
+/* Configuración de cada sección con animación de entrada */
 .footer-section {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.6s ease forwards;
 }
 
+/* Retrasos en la animación para efecto cascada */
 .footer-section:nth-child(2) { animation-delay: 0.2s; }
 .footer-section:nth-child(3) { animation-delay: 0.4s; }
 
+/* ====== TÍTULOS DE SECCIÓN ====== */
+/* Estilo para los encabezados de cada sección */
 .footer-section h3 {
     color: #fff;
     margin-bottom: 1.5rem;
@@ -38,6 +46,7 @@
     position: relative;
 }
 
+/* Línea decorativa debajo de los títulos */
 .footer-section h3::after {
     content: '';
     position: absolute;
@@ -49,10 +58,13 @@
     transition: width 0.3s ease;
 }
 
+/* Efecto hover para la línea decorativa */
 .footer-section:hover h3::after {
     width: 60px;
 }
 
+/* ====== ENLACES Y NAVEGACIÓN ====== */
+/* Lista de enlaces en el footer */
 .footer-links {
     list-style: none;
     padding: 0;
@@ -62,6 +74,7 @@
     margin-bottom: 0.8rem;
 }
 
+/* Estilo y animación de los enlaces */
 .footer-links a {
     color: #999;
     text-decoration: none;
@@ -74,12 +87,15 @@
     transform: translateX(5px);
 }
 
+/* ====== REDES SOCIALES ====== */
+/* Contenedor de iconos de redes sociales */
 .social-links {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
 }
 
+/* Estilo de los botones de redes sociales */
 .social-links a {
     color: #fff;
     background: #333;
@@ -92,11 +108,14 @@
     transition: all 0.3s ease;
 }
 
+/* Efecto hover para botones de redes sociales */
 .social-links a:hover {
     background: #4CAF50;
     transform: translateY(-3px);
 }
 
+/* ====== SECCIÓN INFERIOR DEL FOOTER ====== */
+/* Área de copyright o información adicional */
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
@@ -104,6 +123,8 @@
     border-top: 1px solid #333;
 }
 
+/* ====== ANIMACIONES ====== */
+/* Animación de entrada para elementos del footer */
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -111,6 +132,8 @@
     }
 }
 
+/* ====== DISEÑO RESPONSIVO ====== */
+/* Ajustes para pantallas móviles */
 @media (max-width: 768px) {
     .footer-content {
         grid-template-columns: 1fr;

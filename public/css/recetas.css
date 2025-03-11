@@ -1,34 +1,40 @@
-/* ===== Estilos Generales de la Página de Recetas ===== */
+/* ====== ESTRUCTURA PRINCIPAL DE LA PÁGINA ====== */
+/* Contenedor principal que establece el layout básico y márgenes */
 .recetas-page {
     padding: 120px 2rem 4rem;
     max-width: 1400px;
     margin: 0 auto;
 }
 
-/* ===== Estilos del Encabezado ===== */
+/* ====== SECCIÓN DE ENCABEZADO ====== */
+/* Estilos para el título principal y descripción */
 .recetas-header {
     text-align: center;
     margin-bottom: 3rem;
 }
 
+/* Título principal */
 .recetas-header h1 {
     font-size: 3rem;
     color: #1a1a1a;
     margin-bottom: 1rem;
 }
 
+/* Descripción bajo el título */
 .recetas-header p {
     color: #666;
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
 
-/* ===== Estilos del Buscador ===== */
+/* ====== BARRA DE BÚSQUEDA ====== */
+/* Contenedor del buscador */
 .search-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
+/* Campo de búsqueda */
 #searchInput {
     width: 100%;
     padding: 1rem 2rem;
@@ -39,13 +45,15 @@
     transition: all 0.3s ease;
 }
 
+/* Estado activo del campo de búsqueda */
 #searchInput:focus {
     border-color: #e31837;
     outline: none;
     box-shadow: 0 0 10px rgba(227, 24, 55, 0.1);
 }
 
-/* ===== Estilos de los Filtros ===== */
+/* ====== FILTROS DE CATEGORÍAS ====== */
+/* Contenedor de botones de filtro */
 .categorias-filter {
     display: flex;
     justify-content: center;
@@ -54,6 +62,7 @@
     margin-bottom: 2rem;
 }
 
+/* Botones de filtro individuales */
 .filter-btn {
     padding: 0.5rem 1.5rem;
     border: none;
@@ -64,19 +73,22 @@
     transition: all 0.3s ease;
 }
 
+/* Estado activo de los botones de filtro */
 .filter-btn.active {
     background: #e31837;
     color: white;
 }
 
-/* ===== Estilos de la Cuadrícula de Recetas ===== */
+/* ====== GRID DE RECETAS ====== */
+/* Estructura de cuadrícula responsiva */
 .recetas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-/* ===== Estilos de las Tarjetas de Recetas ===== */
+/* ====== TARJETAS DE RECETAS ====== */
+/* Contenedor principal de cada receta */
 .receta-card {
     background: white;
     border-radius: 15px;
@@ -85,12 +97,14 @@
     transition: all 0.3s ease;
 }
 
+/* Contenedor de la imagen */
 .receta-imagen {
     position: relative;
     height: 200px;
     overflow: hidden;
 }
 
+/* Imagen de la receta */
 .receta-imagen img {
     width: 100%;
     height: auto;
@@ -98,6 +112,7 @@
     transition: transform 0.3s ease;
 }
 
+/* Indicador de tiempo de preparación */
 .receta-tiempo {
     position: absolute;
     top: 1rem;
@@ -109,22 +124,26 @@
     font-size: 0.9rem;
 }
 
+/* Información de la receta */
 .receta-info {
     padding: 1.5rem;
 }
 
+/* Título de la receta */
 .receta-info h3 {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: #1a1a1a;
 }
 
+/* Descripción de la receta */
 .receta-info p {
     color: #666;
     margin-bottom: 1rem;
     line-height: 1.6;
 }
 
+/* Pie de la tarjeta */
 .receta-footer {
     display: flex;
     justify-content: space-between;
@@ -133,6 +152,7 @@
     background: #f9f9f9;
 }
 
+/* Botón para ver video */
 .ver-video-btn {
     display: flex;
     align-items: center;
@@ -146,16 +166,19 @@
     transition: all 0.3s ease;
 }
 
+/* Efecto hover del botón */
 .ver-video-btn:hover {
     background: #c41530;
     transform: translateY(-2px);
 }
 
+/* Icono del botón */
 .ver-video-btn i {
     font-size: 1.2rem;
 }
 
-/* ===== Animaciones ===== */
+/* ====== ANIMACIONES ====== */
+/* Efecto de entrada para las tarjetas */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -167,11 +190,13 @@
     }
 }
 
+/* Aplicación de la animación */
 .receta-card {
     animation: fadeIn 0.5s ease forwards;
 }
 
-/* ===== Media Queries ===== */
+/* ====== DISEÑO RESPONSIVO ====== */
+/* Ajustes para pantallas móviles */
 @media (max-width: 768px) {
     .recetas-page {
         padding: 100px 1rem 2rem;

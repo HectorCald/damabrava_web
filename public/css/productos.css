@@ -1,34 +1,40 @@
-/* ===== Estilos Generales de la Página de Productos ===== */
+/* ====== ESTRUCTURA PRINCIPAL DE LA PÁGINA ====== */
+/* Contenedor principal con espaciado y ancho máximo */
 .productos-page {
     padding: 120px 2rem 4rem;
     max-width: 1400px;
     margin: 0 auto;
 }
 
-/* ===== Estilos del Encabezado y Búsqueda ===== */
+/* ====== SECCIÓN DE ENCABEZADO Y BÚSQUEDA ====== */
+/* Estilos del encabezado centrado */
 .productos-header {
     text-align: center;
     margin-bottom: 3rem;
 }
 
+/* Título principal */
 .productos-header h1 {
     font-size: 3rem;
     color: #1a1a1a;
     margin-bottom: 1rem;
 }
 
+/* Subtítulo o descripción */
 .productos-header p {
     color: #666;
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
 
-/* ===== Estilos del Buscador ===== */
+/* ====== COMPONENTE DE BÚSQUEDA ====== */
+/* Contenedor del buscador */
 .search-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
+/* Campo de búsqueda */
 #searchInput {
     width: 100%;
     padding: 1rem 2rem;
@@ -39,13 +45,15 @@
     transition: all 0.3s ease;
 }
 
+/* Estado activo del campo de búsqueda */
 #searchInput:focus {
     border-color: #e31837;
     outline: none;
     box-shadow: 0 0 10px rgba(227, 24, 55, 0.1);
 }
 
-/* ===== Estilos de los Filtros ===== */
+/* ====== SISTEMA DE FILTRADO ====== */
+/* Contenedor de botones de filtro */
 .categorias-filter {
     display: flex;
     justify-content: center;
@@ -53,6 +61,7 @@
     flex-wrap: wrap;
 }
 
+/* Botones de filtro individuales */
 .filter-btn {
     padding: 0.5rem 1.5rem;
     border: none;
@@ -63,12 +72,14 @@
     transition: all 0.3s ease;
 }
 
+/* Estado activo del botón de filtro */
 .filter-btn.active {
     background: #e31837;
     color: white;
 }
 
-/* ===== Estilos de la Cuadrícula de Productos ===== */
+/* ====== CUADRÍCULA DE PRODUCTOS ====== */
+/* Estructura grid responsiva */
 .productos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -76,6 +87,8 @@
     padding: 2rem;
 }
 
+/* ====== TARJETAS DE PRODUCTOS ====== */
+/* Contenedor principal de la tarjeta */
 .producto-card {
     background: white;
     padding: 1.5rem;
@@ -88,6 +101,7 @@
     align-items: center;
 }
 
+/* Decoración superior de la tarjeta */
 .producto-card::before {
     content: '';
     position: absolute;
@@ -100,6 +114,8 @@
     z-index: 0;
 }
 
+/* ====== IMAGEN DEL PRODUCTO ====== */
+/* Contenedor de la imagen */
 .producto-imagen {
     position: relative;
     width: 90%;
@@ -110,6 +126,7 @@
     z-index: 1;
 }
 
+/* Imagen del producto */
 .producto-imagen img {
     width: 100%;
     height: 100%;
@@ -117,6 +134,8 @@
     transition: transform 0.3s ease;
 }
 
+/* ====== INFORMACIÓN DEL PRODUCTO ====== */
+/* Título del producto */
 .producto-titulo {
     font-size: 1.8rem;
     color: #2d3436;
@@ -124,6 +143,7 @@
     text-align: center;
 }
 
+/* Precio del producto */
 .producto-precio {
     font-size: 2rem;
     color: #e31837;
@@ -131,6 +151,8 @@
     margin-bottom: 1.5rem;
 }
 
+/* ====== OPCIONES DE GRAMAJE ====== */
+/* Contenedor de opciones de peso */
 .gramaje-options {
     display: flex;
     gap: 1rem;
@@ -139,6 +161,7 @@
     justify-content: center;
 }
 
+/* Botones de selección de gramaje */
 .gramaje-btn {
     padding: 0.5rem 1rem;
     border: 2px solid #e31837;
@@ -149,11 +172,14 @@
     transition: all 0.3s ease;
 }
 
+/* Estado activo del botón de gramaje */
 .gramaje-btn.active {
     background: #e31837;
     color: white;
 }
 
+/* ====== SELECTOR DE CANTIDAD ====== */
+/* Contenedor del selector */
 .quantity-selector {
     background: #f8f9fa;
     padding: 0.8rem;
@@ -164,6 +190,7 @@
     margin-bottom: 1.5rem;
 }
 
+/* Botones de incremento/decremento */
 .quantity-btn {
     width: 40px;
     height: 40px;
@@ -177,17 +204,21 @@
     transition: all 0.3s ease;
 }
 
+/* Efecto hover de los botones */
 .quantity-btn:hover {
     background: #e31837;
     color: white;
 }
 
+/* Número de cantidad */
 .quantity {
     font-size: 1.3rem;
     font-weight: 600;
     color: #2d3436;
 }
 
+/* ====== BOTÓN DE AGREGAR AL CARRITO ====== */
+/* Estilo del botón principal */
 .add-to-cart {
     width: 100%;
     padding: 1.2rem;
@@ -203,11 +234,14 @@
     letter-spacing: 1px;
 }
 
+/* Efecto hover del botón */
 .add-to-cart:hover {
     opacity: 0.9;
     transform: translateY(-2px);
 }
 
+/* ====== DISEÑO RESPONSIVO ====== */
+/* Ajustes para pantallas móviles */
 @media (max-width: 768px) {
     .productos-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

@@ -1,4 +1,5 @@
-/* ===== Hero Section Styles ===== */
+/* ====== SECCIÓN HERO (BANNER PRINCIPAL) ====== */
+/* Contenedor principal del banner */
 .hero {
     position: relative;
     height: 100vh;
@@ -11,6 +12,7 @@
     background: #1a1a1a;
 }
 
+/* Contenido del banner */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -18,6 +20,7 @@
     padding-right: 2rem;
 }
 
+/* Título principal con animación */
 .hero-title {
     font-size: 3.5rem;
     font-weight: 700;
@@ -26,6 +29,7 @@
     animation: fadeInUp 1s ease;
 }
 
+/* Descripción del banner */
 .hero-description {
     font-size: 1.2rem;
     line-height: 1.6;
@@ -36,6 +40,7 @@
     animation-fill-mode: both;
 }
 
+/* Contenedor de botones */
 .hero-buttons {
     display: flex;
     gap: 1.5rem;
@@ -43,6 +48,7 @@
     animation-fill-mode: both;
 }
 
+/* Estilos base de botones */
 .hero-btn {
     padding: 1rem 2rem;
     border-radius: 30px;
@@ -52,6 +58,7 @@
     transition: all 0.3s ease;
 }
 
+/* Botón principal */
 .btn-primary {
     background: #e31837;
     color: white;
@@ -64,6 +71,7 @@
     box-shadow: 0 5px 15px rgba(227, 24, 55, 0.4);
 }
 
+/* Botón secundario */
 .btn-secondary {
     background: transparent;
     color: white;
@@ -77,6 +85,7 @@
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
 }
 
+/* Imagen del banner */
 .hero-image {
     position: relative;
     z-index: 1;
@@ -94,16 +103,17 @@
     border-radius: 20px;
 }
 
+/* Capa de superposición */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-
     z-index: 1;
 }
 
+/* ====== ANIMACIONES ====== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -124,7 +134,7 @@
     }
 }
 
-/* Media Queries */
+/* ====== MEDIA QUERIES HERO ====== */
 @media (max-width: 1200px) {
     .hero-title {
         font-size: 3rem;
@@ -185,12 +195,13 @@
     }
 }
 
-/* ===== Sección de Productos Styles ===== */
+/* ====== SECCIÓN DE PRODUCTOS ====== */
 .productos-preview {
     padding: 5rem 2rem;
     background: #f9f9f9;
 }
 
+/* Encabezado de productos */
 .productos-header {
     text-align: center;
     max-width: 800px;
@@ -210,6 +221,7 @@
     margin: 0;
 }
 
+/* Grid de productos */
 .productos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -218,6 +230,7 @@
     margin: 0 auto;
 }
 
+/* Tarjetas de productos */
 .producto-card {
     background: white;
     border-radius: 10px;
@@ -266,6 +279,7 @@
     font-size: 1.2rem;
 }
 
+/* Botón de ver más productos */
 .productos-cta {
     text-align: center;
     margin-top: 3rem;
@@ -288,6 +302,7 @@
     box-shadow: 0 5px 15px rgba(227, 24, 55, 0.4);
 }
 
+/* Media queries productos */
 @media (max-width: 768px) {
     .productos-header h2 {
         font-size: 2rem;
@@ -308,12 +323,14 @@
         font-size: 1.8rem;
     }
 }
-/* ===== Sección de Recetas Styles ===== */
+
+/* ====== SECCIÓN DE RECETAS ====== */
 .recetas-preview {
     padding: 5rem 2rem;
     background: #ffffff;
 }
 
+/* Encabezado de recetas */
 .recetas-header {
     text-align: center;
     max-width: 800px;
@@ -331,6 +348,7 @@
     font-size: 1.1rem;
 }
 
+/* Grid de recetas */
 .recetas-slider {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -340,6 +358,7 @@
     padding: 1rem;
 }
 
+/* Tarjetas de recetas */
 .receta-card {
     background: white;
     border-radius: 15px;
@@ -369,6 +388,7 @@
     transform: scale(1.1);
 }
 
+/* Tiempo de preparación */
 .receta-tiempo {
     position: absolute;
     top: 1rem;
@@ -383,6 +403,7 @@
     gap: 0.5rem;
 }
 
+/* Contenido de la receta */
 .receta-contenido {
     padding: 1.5rem;
 }
@@ -399,6 +420,7 @@
     line-height: 1.5;
 }
 
+/* Pie de la tarjeta de receta */
 .receta-footer {
     display: flex;
     justify-content: space-between;
@@ -425,6 +447,7 @@
     color: #c41530;
 }
 
+/* Botón de ver más recetas */
 .recetas-cta {
     text-align: center;
     margin-top: 3rem;
@@ -447,6 +470,7 @@
     box-shadow: 0 5px 15px rgba(227, 24, 55, 0.4);
 }
 
+/* Media queries recetas */
 @media (max-width: 968px) {
     .recetas-slider {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -467,13 +491,15 @@
         max-width: 350px;
     }
 }
-/* ===== Sección de Nosotros Styles ===== */
+
+/* ====== SECCIÓN NOSOTROS ====== */
 .nosotros-preview {
     padding: 5rem 2rem;
     background: #1a1a1a;
     color: white;
 }
 
+/* Contenedor principal */
 .nosotros-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -483,6 +509,7 @@
     align-items: center;
 }
 
+/* Contenido textual */
 .nosotros-content {
     opacity: 0;
     transform: translateX(-30px);
@@ -511,6 +538,7 @@
     color: #f0f0f0;
 }
 
+/* Botón de nosotros */
 .nosotros-btn {
     display: inline-block;
     padding: 1rem 2rem;
@@ -529,12 +557,12 @@
     box-shadow: 0 5px 15px rgba(227, 24, 55, 0.4);
 }
 
+/* Imagen de la sección */
 .nosotros-image {
     position: relative;
     opacity: 0;
     transform: translateX(30px);
 }
-
 .nosotros-image img {
     width: 100%;
     height: 400px;
@@ -663,18 +691,71 @@
         gap: 1rem;
     }
 }
-/* ===== Sección de Consejos de Cocina Styles===== */
+/* ====== SECCIÓN DE REDES SOCIALES ====== */
+/* Contenedor principal de redes sociales */
+.social-preview {
+    padding: 4rem 2rem;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+/* Contenedor interno y encabezados */
+.social-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-container h2 {
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+}
+
+.social-container > p {
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+/* Grid de tarjetas sociales */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Tarjetas de redes sociales */
+.social-card {
+    padding: 2rem;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+    opacity: 0;
+}
+
+/* Estilos específicos por red social */
+.instagram {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+}
+
+.facebook {
+    background: #1877f2;
+}
+
+.youtube {
+    background: #FF0000;
+}
+
+/* ====== SECCIÓN DE CONSEJOS DE COCINA ====== */
+/* Contenedor principal de consejos */
 .tips-preview {
     padding: 2rem;
     background: #1a1a1a;
 }
 
-.tips-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
+/* Tarjetas de consejos */
 .tip-card {
     background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
     border-radius: 15px;
@@ -687,30 +768,7 @@
     transition: all 0.5s ease;
 }
 
-.tip-card.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.tip-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    animation: float 3s ease-in-out infinite;
-}
-
-.tip-card h3 {
-    color: #e31837;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.tip-card p {
-    color: #ffffff;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    opacity: 0.9;
-}
-
+/* Animación de flotación para iconos */
 @keyframes float {
     0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }

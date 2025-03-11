@@ -485,6 +485,9 @@ app.get('/productos', (req, res) => {
 app.get('/recetas', (req, res) => {
     res.render('recetas');
 });
+app.get('/nosotros', (req, res) => {
+    res.render('nosotros');
+});
 
 app.get('/adm', requireAuth, nocache, (req, res) => {
     res.render('adm');

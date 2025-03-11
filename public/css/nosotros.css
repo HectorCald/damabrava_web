@@ -1,8 +1,11 @@
-/* ===== Estilos Generales ===== */
+/* ====== CONFIGURACIÓN GENERAL DE LA PÁGINA ====== */
+/* Ajuste del espaciado superior para evitar superposición con el header fijo */
 .nosotros-page {
     padding-top: 80px;
 }
 
+/* ====== ENCABEZADO PRINCIPAL ====== */
+/* Sección de banner con fondo oscuro y texto centrado */
 .nosotros-header {
     text-align: center;
     padding: 4rem 2rem;
@@ -10,22 +13,26 @@
     color: white;
 }
 
+/* Título principal del encabezado */
 .nosotros-header h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
 
+/* Subtítulo o descripción del encabezado */
 .nosotros-header p {
     font-size: 1.2rem;
     opacity: 0.9;
 }
 
-/* ===== Sección Historia ===== */
+/* ====== SECCIÓN DE HISTORIA ====== */
+/* Contenedor de la sección histórica con fondo claro */
 .historia-section {
     padding: 5rem 2rem;
     background: #ffffff;
 }
 
+/* Grid para contenido dividido en dos columnas */
 .content-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -35,6 +42,7 @@
     align-items: center;
 }
 
+/* Estilos para el contenido textual */
 .text-content h2 {
     font-size: 2.5rem;
     color: #1a1a1a;
@@ -47,18 +55,21 @@
     color: #666;
 }
 
+/* Estilos para las imágenes */
 .image-content img {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* ===== Sección Misión y Visión ===== */
+/* ====== SECCIÓN DE MISIÓN Y VISIÓN ====== */
+/* Contenedor con fondo gris claro */
 .mision-vision-section {
     padding: 5rem 2rem;
     background: #f9f9f9;
 }
 
+/* Cajas de misión y visión con efectos hover */
 .mision-box, .vision-box {
     padding: 2rem;
     background: white;
@@ -67,28 +78,33 @@
     transition: transform 0.3s ease;
 }
 
+/* Efecto de elevación al pasar el mouse */
 .mision-box:hover, .vision-box:hover {
     transform: translateY(-5px);
 }
 
+/* Títulos de misión y visión */
 .mision-box h2, .vision-box h2 {
     color: #e31837;
     margin-bottom: 1rem;
 }
 
-/* ===== Sección Valores ===== */
+/* ====== SECCIÓN DE VALORES ====== */
+/* Contenedor principal de valores */
 .valores-section {
     padding: 5rem 2rem;
     background: #ffffff;
     text-align: center;
 }
 
+/* Título de la sección */
 .valores-section h2 {
     font-size: 2.5rem;
     color: #1a1a1a;
     margin-bottom: 3rem;
 }
 
+/* Grid responsivo para tarjetas de valores */
 .valores-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -97,6 +113,7 @@
     margin: 0 auto;
 }
 
+/* Tarjetas individuales de valores */
 .valor-card {
     padding: 2rem;
     background: white;
@@ -105,26 +122,31 @@
     transition: all 0.3s ease;
 }
 
+/* Efecto hover en las tarjetas */
 .valor-card:hover {
     transform: translateY(-10px);
 }
 
+/* Iconos en las tarjetas */
 .valor-card i {
     font-size: 2.5rem;
     color: #e31837;
     margin-bottom: 1rem;
 }
 
+/* Títulos de las tarjetas */
 .valor-card h3 {
     color: #1a1a1a;
     margin-bottom: 1rem;
 }
 
+/* Texto descriptivo de las tarjetas */
 .valor-card p {
     color: #666;
 }
 
-/* ===== Media Queries ===== */
+/* ====== DISEÑO RESPONSIVO ====== */
+/* Ajustes para tablets */
 @media (max-width: 968px) {
     .content-container {
         grid-template-columns: 1fr;
@@ -140,6 +162,7 @@
     }
 }
 
+/* Ajustes para móviles */
 @media (max-width: 768px) {
     .nosotros-header {
         padding: 3rem 1rem;
