@@ -71,31 +71,43 @@
 /* ===== Estilos de la Cuadrícula de Productos ===== */
 .productos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem 0;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
 }
 
-/* ===== Estilos de las Tarjetas de Productos ===== */
 .producto-card {
     background: white;
-    border-radius: 15px;
+    padding: 1.5rem;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.5s ease forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.producto-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+.producto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: #e31837;
+    border-radius: 30px 30px 0 0;
+    z-index: 0;
 }
 
 .producto-imagen {
-    height: 200px;
+    position: relative;
+    width: 90%;
+    height: 250px;
+    border-radius: 20px;
     overflow: hidden;
+    margin-bottom: 1.5rem;
+    z-index: 1;
 }
 
 .producto-imagen img {
@@ -105,57 +117,116 @@
     transition: transform 0.3s ease;
 }
 
-.producto-card:hover .producto-imagen img {
-    transform: scale(1.1);
-}
-
-.producto-info {
-    padding: 1.5rem;
-}
-
-.producto-info h3 {
-    margin: 0 0 0.5rem;
-    color: #1a1a1a;
-}
-
-.producto-info p {
-    color: #666;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+.producto-titulo {
+    font-size: 1.8rem;
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .producto-precio {
+    font-size: 2rem;
     color: #e31837;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.gramaje-options {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gramaje-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e31837;
+    border-radius: 15px;
+    background: transparent;
+    color: #e31837;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gramaje-btn.active {
+    background: #e31837;
+    color: white;
+}
+
+.quantity-selector {
+    background: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
     font-size: 1.2rem;
-    font-weight: bold;
+    color: #2d3436;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
 }
 
-.producto-categoria {
-    font-size: 0.8rem;
-    color: #999;
+.quantity-btn:hover {
+    background: #e31837;
+    color: white;
+}
+
+.quantity {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2d3436;
+}
+
+.add-to-cart {
+    width: 100%;
+    padding: 1.2rem;
+    border: none;
+    background: #e31837;
+    color: white;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* ===== Animaciones ===== */
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.add-to-cart:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
 
-/* ===== Media Queries ===== */
 @media (max-width: 768px) {
-    .productos-page {
-        padding: 100px 1rem 2rem;
+    .productos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        padding: 1rem;
     }
 
-    .productos-header h1 {
-        font-size: 2rem;
+    .producto-card {
+        padding: 1rem;
     }
 
-    .filter-btn {
-        padding: 0.4rem 1rem;
-        font-size: 0.9rem;
+    .producto-imagen {
+        height: 200px;
+    }
+
+    .producto-titulo {
+        font-size: 1.5rem;
+    }
+
+    .producto-precio {
+        font-size: 1.8rem;
     }
 }

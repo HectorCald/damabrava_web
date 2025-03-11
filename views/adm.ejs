@@ -1,147 +1,275 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Damabrava</title>
+    <link rel="stylesheet" href="/css/adm.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="/img/img-iconos/logo.png" alt="Logo Damabrava" class="logo">
+                <h2>Damabrava</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#dashboard">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#productos">
+                            <i class="fas fa-box"></i>
+                            <span>Productos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#recetas">
+                            <i class="fas fa-utensils"></i>
+                            <span>Recetas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#seguridad">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Seguridad</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a  class="logout-btn" id="logoutBtn" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+        </aside>
 
-<div class="admin-container">
-    <!-- Sidebar -->
-    <aside class="admin-sidebar">
-        <div class="admin-profile">
-            <img src="/img/admin/admin-avatar.png" alt="Admin">
-            <h3>Administrador</h3>
-        </div>
-        <nav class="admin-nav">
-            <button class="nav-btn active" data-section="productos">
-                <i class="fas fa-box"></i>Productos
-            </button>
-            <button class="nav-btn" data-section="recetas">
-                <i class="fas fa-utensils"></i>Recetas
-            </button>
-            <button class="nav-btn" data-section="catalogo">
-                <i class="fas fa-book"></i>Catálogo
-            </button>
-            <button class="nav-btn" data-section="password">
-                <i class="fas fa-key"></i>Cambiar Contraseña
-            </button>
-            <button class="nav-btn logout">
-                <i class="fas fa-sign-out-alt"></i>Cerrar Sesión
-            </button>
-        </nav>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="admin-content">
-        <!-- Productos Section -->
-        <section class="content-section active" id="productos">
-            <div class="section-header">
-                <h2>Gestión de Productos</h2>
-                <button class="add-btn" id="addProductBtn">
-                    <i class="fas fa-plus"></i> Nuevo Producto
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
                 </button>
-            </div>
-            <div class="search-bar">
-                <input type="text" id="searchProductos" placeholder="Buscar productos...">
-                <i class="fas fa-search"></i>
-            </div>
-            <div class="items-grid" id="productosGrid">
-                <!-- Products will be loaded dynamically -->
-            </div>
-        </section>
+                <div class="header-right">
+                    <div class="admin-profile">
+                        <img src="/img/img-iconos/admin-avatar.png" alt="Admin" class="admin-avatar">
+                        <span class="admin-name">Administrador</span>
+                    </div>
+                </div>
+            </header>
 
-        <!-- Recetas Section -->
-        <section class="content-section" id="recetas">
-            <div class="section-header">
-                <h2>Gestión de Recetas</h2>
-                <button class="add-btn" id="addRecetaBtn">
-                    <i class="fas fa-plus"></i> Nueva Receta
-                </button>
-            </div>
-            <div class="search-bar">
-                <input type="text" id="searchRecetas" placeholder="Buscar recetas...">
-                <i class="fas fa-search"></i>
-            </div>
-            <div class="items-grid" id="recetasGrid">
-                <!-- Recipes will be loaded dynamically -->
-            </div>
-        </section>
+            <div class="content-wrapper">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="content-section active">
+                    <h1>Dashboard</h1>
+                    <div class="dashboard-grid">
+                                                <!-- En la sección del dashboard -->
+                        <div class="dashboard-card">
+                            <i class="fas fa-box"></i>
+                            <h3>Total Productos</h3>
+                            <p id="totalProductos">0</p> <!-- Agregar id aquí -->
+                        </div>
+                        <div class="dashboard-card">
+                            <i class="fas fa-utensils"></i>
+                            <h3>Total Recetas</h3>
+                            <p id="totalRecetas">0</p>
+                        </div>
+                        <div class="dashboard-card">
+                            <i class="fas fa-eye"></i>
+                            <h3>Visitas</h3>
+                            <p>5,678</p>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- Catalogo Section -->
-        <section class="content-section" id="catalogo">
-            <div class="section-header">
-                <h2>Gestión de Catálogo</h2>
-            </div>
-            <div class="catalog-upload">
-                <div class="upload-area" id="uploadArea">
-                    <i class="fas fa-file-pdf"></i>
-                    <p>Arrastra y suelta el nuevo catálogo PDF aquí o</p>
-                    <label class="upload-btn">
-                        Seleccionar Archivo
-                        <input type="file" id="catalogFile" accept=".pdf" hidden>
-                    </label>
-                </div>
-                <div class="current-catalog">
-                    <h3>Catálogo Actual</h3>
-                    <a href="/catalogo.pdf" target="_blank" class="catalog-link">
-                        <i class="fas fa-file-pdf"></i>
-                        Ver Catálogo Actual
-                    </a>
-                </div>
-            </div>
-        </section>
+                <!-- Productos Section -->
+                <section id="productos" class="content-section">
+                    <h1>Gestión de Productos</h1>
+                    <div class="section-content">
+                        <div class="action-bar">
+                            <div class="botones">
+                                <button onclick="toggleDiv('.formProduct')" class="action-btn primary" id="newProduct">
+                                    <i class="fas fa-plus"></i> Nuevo Producto
+                                </button>
+                                <button onclick="toggleDiv('.formCat')" class="action-btn primary">
+                                    <i class="fas fa-sync"></i>Actualizar catalogo
+                                </button>
+                            </div>
+                            <div class="search-bar">
+                                <input type="text" placeholder="Buscar productos...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="data-grid">
+                                                    <!-- ... código existente ... -->
+                            <div class="dataProduct">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Gramaje</th>
+                                            <th>Precio</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Los productos se cargarán dinámicamente aquí -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        <!-- ... código existente ... -->
+                        </div>
+                            <!-- Formulario de nuevo producto -->
+                                                        <!-- ... código existente ... -->
+                            <div class="formProduct">
+                                <div class="title">
+                                    <h1 id="formTitle">Nuevo producto</h1>
+                                    <button id="closeProduct" onclick="toggleDiv('.formProduct')">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                                <form id="productForm" enctype="multipart/form-data">
+                                    <input type="hidden" id="productoId">
+                                    <p>Nombre</p>
+                                    <input type="text" id="nombre">
+                                    <p>Precio</p>
+                                    <input type="number" id="precio">
+                                    <p>Gramaje</p>
+                                    <input type="number" id="gramaje">
+                                    <ul id="listaGramajes" class="gramajes-list"></ul>
+                                    <button type="button" id="addGramaje">Agregar otro Gramaje</button>
+                                    <p>Imagen</p>
+                                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                                    <button type="submit" id="submitBtn">Agregar</button>
+                                </form>
+                            </div>
+                            <!-- ... resto del código ... -->
+                            <!-- Formulario de nuevo catalogo -->
+                            <div class="formCat">
+                                <div class="title">
+                                    <h1>Actualizar catálogo</h1>
+                                    <button onclick="toggleDiv('.formCat')" id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+                                </div>
+                                <form id="catForm">
+                                    <p>Archivo (PDF)</p>
+                                    <input type="file">
+                                    <button type="submit">Actualizar</button>
+                                </form>
+                            </div>
+                    </div>
 
-        <!-- Password Section -->
-        <section class="content-section" id="password">
-            <div class="section-header">
-                <h2>Cambiar Contraseña</h2>
-            </div>
-            <form class="password-form" id="passwordForm">
-                <div class="form-group">
-                    <label>Contraseña Actual</label>
-                    <input type="password" id="currentPassword" required>
-                </div>
-                <div class="form-group">
-                    <label>Nueva Contraseña</label>
-                    <input type="password" id="newPassword" required>
-                </div>
-                <div class="form-group">
-                    <label>Confirmar Nueva Contraseña</label>
-                    <input type="password" id="confirmPassword" required>
-                </div>
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-save"></i> Guardar Cambios
-                </button>
-            </form>
-        </section>
-    </main>
+                </section>
 
-    <!-- Modal for adding/editing items -->
-    <div class="modal" id="itemModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 id="modalTitle">Nuevo Item</h2>
-            <form id="itemForm">
-                <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" id="itemName" required>
-                </div>
-                <div class="form-group">
-                    <label>Descripción</label>
-                    <textarea id="itemDescription" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Imagen</label>
-                    <input type="file" id="itemImage" accept="image/*">
-                </div>
-                <div class="form-group" id="priceGroup">
-                    <label>Precio</label>
-                    <input type="number" id="itemPrice" step="0.01">
-                </div>
-                <div class="form-group" id="videoGroup">
-                    <label>URL del Video</label>
-                    <input type="url" id="itemVideo">
-                </div>
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-save"></i> Guardar
-                </button>
-            </form>
-        </div>
+                <!-- Recetas Section -->
+                <section id="recetas" class="content-section">
+                    <h1>Gestión de Recetas</h1>
+                    <div class="section-content">
+                        <div class="action-bar">
+                            <button onclick="toggleDiv('.formRecipe')" class="action-btn primary">
+                                <i class="fas fa-plus"></i> Nueva Receta
+                            </button>
+                            <div class="search-bar">
+                                <input type="text" placeholder="Buscar recetas...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="data-grid">
+                            <div class="dataRecipe">
+                                <div class="table-responsive">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Descripción</th>
+                                                <th>Video</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Chocolate Negro</td>
+                                                <td>Chocolate con 70% de cacao, sabor intenso.</td>
+                                                <td><a href="https://www.youtube.com/watch?v=ejemplo1" target="_blank">Ver video</a></td>
+                                                <td>
+                                                    <button class="edit"><i class="fa-solid fa-pen"></i></button>
+                                                    <button class="delete"><i class="fa-solid fa-xmark"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Galletas de Avena</td>
+                                                <td>Galletas crujientes con trozos de chocolate.</td>
+                                                <td><a href="https://www.youtube.com/watch?v=ejemplo2" target="_blank">Ver video</a></td>
+                                                <td>
+                                                    <button class="edit"><i class="fa-solid fa-pen"></i></button>
+                                                    <button class="delete"><i class="fa-solid fa-xmark"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Café Molido</td>
+                                                <td>Café 100% arábica, molido para espresso.</td>
+                                                <td><a href="https://www.youtube.com/watch?v=ejemplo3" target="_blank">Ver video</a></td>
+                                                <td>
+                                                    <button class="edit"><i class="fa-solid fa-pen"></i></button>
+                                                    <button class="delete"><i class="fa-solid fa-xmark"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- formulario de agregar receta -->
+                        <!-- Add this inside the recetas section -->
+                        <div class="formRecipe">
+                            <div class="title">
+                                <h1 id="recipeFormTitle">Nueva Receta</h1>
+                                <button onclick="toggleDiv('.formRecipe')" id="closeRecipe">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                            <form id="recipeForm" enctype="multipart/form-data">
+                                <input type="hidden" id="recetaId">
+                                <p>Nombre</p>
+                                <input type="text" id="nombreReceta" required>
+                                <p>Descripción</p>
+                                <textarea id="descripcionReceta" required></textarea>
+                                <p>URL del Video</p>
+                                <input type="url" id="urlReceta" required>
+                                <p>Imagen</p>
+                                <input type="file" id="imagenReceta" name="imagen" accept="image/*" required>
+                                <button type="submit" id="submitRecipeBtn">Agregar</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+                <!-- Seguridad Section -->
+                <section id="seguridad" class="content-section">
+                    <h1>Configuración de Seguridad</h1>
+                    <div class="section-content">
+                        <div class="security-grid">
+                            <div class="security-card">
+                                <i class="fas fa-lock"></i>
+                                <h3>Contraseñas</h3>
+                                <p>Políticas de seguridad</p>
+                            </div>
+                            <div class="security-card">
+                                <i class="fas fa-history"></i>
+                                <h3>Registros</h3>
+                                <p>Historial de actividades</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
     </div>
-</div>
-<script src="./js/adm.js"></script>
+    <script src="/js/adm.js"></script>
+</body>
+</html>

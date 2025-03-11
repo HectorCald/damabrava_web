@@ -1,92 +1,112 @@
-/* ===== Datos de Productos ===== */
-const productos = [
-    {
-        id: 1,
-        nombre: "Orégano Premium",
-        descripcion: "Orégano mediterráneo de la más alta calidad",
-        precio: 5.99,
-        categoria: "hierbas",
-        imagen: "/img/productos/oregano.jpg"
-    },
-    {
-        id: 2,
-        nombre: "Pimentón Ahumado",
-        descripcion: "Pimentón español con toque ahumado",
-        precio: 6.99,
-        categoria: "especias",
-        imagen: "/img/productos/pimenton.jpg"
-    },
-    {
-        id: 3,
-        nombre: "Mix Italiano",
-        descripcion: "Mezcla perfecta para pizzas y pastas",
-        precio: 7.99,
-        categoria: "mezclas",
-        imagen: "/img/productos/mix-italiano.jpg"
-    },
-    {
-        id: 4,
-        nombre: "Albahaca Seca",
-        descripcion: "Albahaca aromática secada naturalmente",
-        precio: 4.99,
-        categoria: "hierbas",
-        imagen: "/img/productos/albahaca.jpg"
-    }
-];
-
-/* ===== Inicialización y Eventos ===== */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const productosContainer = document.getElementById('productosContainer');
     const searchInput = document.getElementById('searchInput');
     const filterBtns = document.querySelectorAll('.filter-btn');
     let categoriaActual = 'todos';
+    let productos = [];
 
-    /* ===== Función para Mostrar Productos ===== */
+    // Función para cargar productos desde la API
+    async function cargarProductos() {
+        try {
+            const response = await fetch('/api/productos');
+            productos = await response.json();
+            filtrarProductos();
+        } catch (error) {
+            console.error('Error al cargar productos:', error);
+        }
+    }
+
     function mostrarProductos(productos) {
         productosContainer.innerHTML = '';
         productos.forEach((producto, index) => {
             const delay = index * 0.1;
+            const primerGramaje = producto.gramajes[0];
+            
+            const gramajeBotones = producto.gramajes.map((gramaje, idx) => `
+                <button class="gramaje-btn ${idx === 0 ? 'active' : ''}" 
+                        data-precio="${gramaje.precio}" 
+                        data-peso="${gramaje.peso}">
+                    ${gramaje.peso}
+                </button>
+            `).join('');
+            const imagenSrc = producto.imagen_url || '/img/productos/default.jpg';
+
             const card = `
                 <div class="producto-card" style="animation-delay: ${delay}s">
                     <div class="producto-imagen">
-                        <img src="${producto.imagen}" alt="${producto.nombre}">
+                        <img src="${imagenSrc}" 
+                            alt="${producto.nombre}" 
+                            onerror="this.src='/img/productos/default.jpg'"
+                            loading="lazy">
                     </div>
-                    <div class="producto-info">
-                        <span class="producto-categoria">${producto.categoria}</span>
-                        <h3>${producto.nombre}</h3>
-                        <p>${producto.descripcion}</p>
-                        <span class="producto-precio">$${producto.precio}</span>
+                    <h2 class="producto-titulo">${producto.nombre}</h2>
+                    <p class="producto-precio">Bs. ${primerGramaje.precio}</p>
+                    
+                    <div class="gramaje-options">
+                        ${gramajeBotones}
                     </div>
+
+                    <div class="quantity-selector">
+                        <button class="quantity-btn minus">−</button>
+                        <span class="quantity">1</span>
+                        <button class="quantity-btn plus">+</button>
+                    </div>
+
+                    <button class="add-to-cart">Agregar al Carrito</button>
                 </div>
             `;
             productosContainer.innerHTML += card;
         });
+
+        // Inicializar eventos de los botones de gramaje
+        inicializarEventosProductos();
     }
 
-    /* ===== Función para Filtrar Productos ===== */
+    function inicializarEventosProductos() {
+        document.querySelectorAll('.producto-card').forEach(card => {
+            const gramajeBtns = card.querySelectorAll('.gramaje-btn');
+            const precioElement = card.querySelector('.producto-precio');
+            const quantityDisplay = card.querySelector('.quantity');
+            const minusBtn = card.querySelector('.minus');
+            const plusBtn = card.querySelector('.plus');
+            let quantity = 1;
+
+            gramajeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    gramajeBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    precioElement.textContent = `Bs. ${btn.dataset.precio}`;
+                });
+            });
+
+            // Manejadores de cantidad
+            minusBtn.addEventListener('click', () => {
+                if (quantity > 1) {
+                    quantity--;
+                    quantityDisplay.textContent = quantity;
+                }
+            });
+
+            plusBtn.addEventListener('click', () => {
+                if (quantity < 10) {
+                    quantity++;
+                    quantityDisplay.textContent = quantity;
+                }
+            });
+        });
+    }
+
     function filtrarProductos() {
         const busqueda = searchInput.value.toLowerCase();
         const productosFiltrados = productos.filter(producto => {
-            const coincideCategoria = categoriaActual === 'todos' || producto.categoria === categoriaActual;
-            const coincideBusqueda = producto.nombre.toLowerCase().includes(busqueda) ||
-                                   producto.descripcion.toLowerCase().includes(busqueda);
-            return coincideCategoria && coincideBusqueda;
+            const coincideBusqueda = producto.nombre.toLowerCase().includes(busqueda);
+            return coincideBusqueda;
         });
         mostrarProductos(productosFiltrados);
     }
 
-    /* ===== Event Listeners ===== */
     searchInput.addEventListener('input', filtrarProductos);
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            categoriaActual = btn.dataset.category;
-            filtrarProductos();
-        });
-    });
-
-    // Mostrar todos los productos al cargar
-    mostrarProductos(productos);
+    // Cargar productos al iniciar
+    await cargarProductos();
 });

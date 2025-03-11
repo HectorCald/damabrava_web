@@ -185,7 +185,7 @@
     }
 }
 
-/* ===== Sección de Productos Preview ===== */
+/* ===== Sección de Productos Styles ===== */
 .productos-preview {
     padding: 5rem 2rem;
     background: #f9f9f9;
@@ -194,18 +194,20 @@
 .productos-header {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 1rem;
+    padding: 0;
 }
 
 .productos-header h2 {
     font-size: 2.5rem;
     color: #1a1a1a;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .productos-header p {
     color: #666;
     font-size: 1.1rem;
+    margin: 0;
 }
 
 .productos-grid {
@@ -229,7 +231,7 @@
 }
 
 .producto-imagen {
-    height: 200px;
+    height: 150px;
     overflow: hidden;
 }
 
@@ -306,7 +308,7 @@
         font-size: 1.8rem;
     }
 }
-/* ===== Sección de Recetas Preview ===== */
+/* ===== Sección de Recetas Styles ===== */
 .recetas-preview {
     padding: 5rem 2rem;
     background: #ffffff;
@@ -465,7 +467,7 @@
         max-width: 350px;
     }
 }
-/* ===== Sección de Nosotros Preview ===== */
+/* ===== Sección de Nosotros Styles ===== */
 .nosotros-preview {
     padding: 5rem 2rem;
     background: #1a1a1a;
@@ -574,7 +576,7 @@
         font-size: 1rem;
     }
 }
-/* ===== Sección de Redes Sociales ===== */
+/* ===== Sección de Redes Sociales Styles===== */
 .social-preview {
     padding: 4rem 2rem;
     background: #f9f9f9;
@@ -661,7 +663,7 @@
         gap: 1rem;
     }
 }
-/* ===== Sección de Consejos de Cocina ===== */
+/* ===== Sección de Consejos de Cocina Styles===== */
 .tips-preview {
     padding: 2rem;
     background: #1a1a1a;

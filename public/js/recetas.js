@@ -1,42 +1,21 @@
-/* ===== Datos de Recetas ===== */
-const recetas = [
-    {
-        id: 1,
-        nombre: "Pollo a las Hierbas",
-        descripcion: "Delicioso pollo marinado con nuestro mix de hierbas especiales",
-        categoria: "carnes",
-        tiempo: "45 min",
-        imagen: "/img/recetas/pollo-hierbas.jpg",
-        videoUrl: "https://youtube.com/watch?v=example1"
-    },
-    {
-        id: 2,
-        nombre: "Pasta Mediterránea",
-        descripcion: "Pasta al dente con nuestra mezcla de especias mediterráneas",
-        categoria: "pastas",
-        tiempo: "30 min",
-        imagen: "/img/recetas/pasta-mediterranea.jpg",
-        videoUrl: "https://youtube.com/watch?v=example2"
-    },
-    {
-        id: 3,
-        nombre: "Salmón al Pimentón",
-        descripcion: "Salmón fresco realzado con nuestro pimentón ahumado",
-        categoria: "pescados",
-        tiempo: "35 min",
-        imagen: "/img/recetas/salmon-pimenton.jpg",
-        videoUrl: "https://youtube.com/watch?v=example3"
-    }
-];
-
-/* ===== Inicialización y Eventos ===== */
 document.addEventListener('DOMContentLoaded', () => {
     const recetasContainer = document.getElementById('recetasContainer');
     const searchInput = document.getElementById('searchInput');
     const filterBtns = document.querySelectorAll('.filter-btn');
+    let recetasData = [];
     let categoriaActual = 'todas';
 
-    /* ===== Función para Mostrar Recetas ===== */
+    // Función para cargar recetas desde la base de datos
+    async function cargarRecetas() {
+        try {
+            const response = await fetch('/api/recetas');
+            recetasData = await response.json();
+            mostrarRecetas(recetasData);
+        } catch (error) {
+            console.error('Error al cargar recetas:', error);
+        }
+    }
+
     function mostrarRecetas(recetas) {
         recetasContainer.innerHTML = '';
         recetas.forEach((receta, index) => {
@@ -46,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="receta-imagen">
                         <img src="${receta.imagen}" alt="${receta.nombre}">
                         <div class="receta-tiempo">
-                            <i class="far fa-clock"></i> ${receta.tiempo}
+                            <i class="far fa-clock"></i> 45 min
                         </div>
                     </div>
                     <div class="receta-info">
@@ -54,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>${receta.descripcion}</p>
                     </div>
                     <div class="receta-footer">
-                        <span class="categoria">${receta.categoria}</span>
-                        <a href="${receta.videoUrl}" target="_blank" class="ver-video-btn">
+                        <span class="categoria">Receta</span>
+                        <a href="${receta.url}" target="_blank" class="ver-video-btn">
                             <i class="fab fa-youtube"></i>
                             Ver Video
                         </a>
@@ -66,19 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ===== Función para Filtrar Recetas ===== */
     function filtrarRecetas() {
         const busqueda = searchInput.value.toLowerCase();
-        const recetasFiltradas = recetas.filter(receta => {
-            const coincideCategoria = categoriaActual === 'todas' || receta.categoria === categoriaActual;
-            const coincideBusqueda = receta.nombre.toLowerCase().includes(busqueda) ||
-                                   receta.descripcion.toLowerCase().includes(busqueda);
-            return coincideCategoria && coincideBusqueda;
+        const recetasFiltradas = recetasData.filter(receta => {
+            return receta.nombre.toLowerCase().includes(busqueda) ||
+                   receta.descripcion.toLowerCase().includes(busqueda);
         });
         mostrarRecetas(recetasFiltradas);
     }
 
-    /* ===== Event Listeners ===== */
+    // Event Listeners
     searchInput.addEventListener('input', filtrarRecetas);
 
     filterBtns.forEach(btn => {
@@ -90,6 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Mostrar todas las recetas al cargar
-    mostrarRecetas(recetas);
+    // Cargar recetas al iniciar
+    cargarRecetas();
 });
