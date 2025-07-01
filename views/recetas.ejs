@@ -2,24 +2,71 @@
 
 <!-- ===== Sección Principal de Recetas ===== -->
 <section class="recetas-page">
-    <!-- Seccion de busqueda y filtros -->
-    <div class="recetas-header">
+    <div class="recetas-header-ruta">
         <h1>Nuestras Recetas</h1>
         <p>Explora deliciosas recetas preparadas con nuestros condimentos</p>
-        
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Buscar recetas...">
-            <div class="categorias-filter">
-                <button class="filter-btn active" data-category="todas">Todas</button>
-                <button class="filter-btn" data-category="carnes">Carnes</button>
-                <button class="filter-btn" data-category="pastas">Pastas</button>
-                <button class="filter-btn" data-category="pescados">Pescados</button>
+        <div class="search-container" style="position:relative;">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar recetas...">
+                <i id="clearSearch" class="fa-solid fa-xmark"></i>
             </div>
+            <div id="sugerenciasRecetas" class="sugerencias-autocomplete"></div>
         </div>
     </div>
 
     <div class="recetas-grid" id="recetasContainer">
-        <!-- Las recetas se generarán dinámicamente con JavaScript -->
+        <div class="skeleton-receta-card skeleton">
+            <div class="skeleton-receta-imagen">
+                <div class="skeleton-receta-tiempo"></div>
+            </div>
+            <div class="skeleton-receta-contenido">
+                <div class="skeleton-receta-titulo"></div>
+                <div class="skeleton-receta-descripcion"></div>
+                <div class="skeleton-receta-footer">
+                    <div class="skeleton-dificultad"></div>
+                    <div class="skeleton-ver-receta"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-receta-card skeleton">
+            <div class="skeleton-receta-imagen">
+                <div class="skeleton-receta-tiempo"></div>
+            </div>
+            <div class="skeleton-receta-contenido">
+                <div class="skeleton-receta-titulo"></div>
+                <div class="skeleton-receta-descripcion"></div>
+                <div class="skeleton-receta-footer">
+                    <div class="skeleton-dificultad"></div>
+                    <div class="skeleton-ver-receta"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-receta-card skeleton">
+            <div class="skeleton-receta-imagen">
+                <div class="skeleton-receta-tiempo"></div>
+            </div>
+            <div class="skeleton-receta-contenido">
+                <div class="skeleton-receta-titulo"></div>
+                <div class="skeleton-receta-descripcion"></div>
+                <div class="skeleton-receta-footer">
+                    <div class="skeleton-dificultad"></div>
+                    <div class="skeleton-ver-receta"></div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-receta-card skeleton">
+            <div class="skeleton-receta-imagen">
+                <div class="skeleton-receta-tiempo"></div>
+            </div>
+            <div class="skeleton-receta-contenido">
+                <div class="skeleton-receta-titulo"></div>
+                <div class="skeleton-receta-descripcion"></div>
+                <div class="skeleton-receta-footer">
+                    <div class="skeleton-dificultad"></div>
+                    <div class="skeleton-ver-receta"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

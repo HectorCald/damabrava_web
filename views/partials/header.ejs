@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Damabrava</title>
+    <title>damabrava</title>
     <!-- CSS Links -->
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
@@ -12,19 +13,22 @@
     <link rel="stylesheet" href="/css/productos.css">
     <link rel="stylesheet" href="/css/recetas.css">
     <link rel="stylesheet" href="/css/nosotros.css">
-    <link rel="stylesheet" href="/css/adm.css">
     <!-- Font Awesome para los íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-papbC70NqU27mMfLzB14vnVbHqqbSLrQ9Vq3ZpAzE7QHRmY3LYAc4sqcPLtvyjL6/PS9bYKNVqQhUX6uKYm+pg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <header class="header">
         <!-- Nav bar -->
         <nav class="navbar">
             <div class="nav-brand">
                 <img src="./img/img-inicio/logotipo.webp" alt="Damabrava Logo" class="logo">
-                <span class="company-name">Damabrava</span>
+                <span class="company-name">damabrava</span>
             </div>
-            
+
             <div class="nav-menu">
                 <ul class="nav-list">
                     <li><a href="/" class="nav-link">Inicio</a></li>
@@ -32,28 +36,30 @@
                     <li><a href="/recetas" class="nav-link">Recetas</a></li>
                     <li><a href="/nosotros" class="nav-link">Nosotros</a></li>
                 </ul>
-                <button class="login-btn">Acceder</button>
             </div>
-    
+
             <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </nav>
-    
+
 
         <!-- Modal de Login -->
         <div class="login-modal">
-                    <div class="modal-content">
-                        <span class="close-modal">&times;</span>
-                        <h2>Iniciar Sesión</h2>
-                        <form class="login-form" id="loginForm">
-                            <input type="text" name="username" placeholder="Usuario" required>
-                            <input type="password" name="password" placeholder="Contraseña" required>
-                            <button type="submit">Entrar</button>
-                        </form>
-                        <div class="login-message" id="loginMessage"></div>
-                    </div>
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Iniciar Sesión</h2>
+                <form class="login-form" id="loginForm">
+                    <input type="text" name="username" placeholder="Usuario" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <button type="submit">Entrar</button>
+                </form>
+                <div class="login-message" id="loginMessage"></div>
+            </div>
         </div>
     </header>
+    <a href="https://wa.me/59170325449" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>

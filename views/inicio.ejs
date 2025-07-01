@@ -1,94 +1,170 @@
 <%- include('partials/header') %>
-<!-- Hero Section -->
-<section class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">"Damabrava con más de 50 productos: condimentos, ajíes, especias, y hierbas aromáticas."</h1>
-        <p class="hero-description">"Tradición y sabor en cada plato boliviano."</p>
-        <div class="hero-buttons">
-            <a href="/productos" class="hero-btn btn-primary">Ver Catálogo</a>
-            <a href="#footer" class="hero-btn btn-secondary" id="contactBtn">Contacto</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">"Damabrava con más de 50 productos: condimentos, ajíes, especias, y hierbas
+                aromáticas."</h1>
+            <p class="hero-description">"Tradición y sabor en cada plato boliviano."</p>
+            <div class="hero-buttons">
+                <a id="catalogoBtn" style="cursor: pointer;" class="hero-btn btn-primary">Catálogo PDF</a>
+                <a href="#footer" class="hero-btn btn-secondary" id="contactBtn">Contacto</a>
+            </div>
         </div>
-    </div>
-    <div class="hero-image">
-        <img src="./img/img-inicio/principal-inicio.jpg" alt="Especias Damabrava">
-    </div>
-    <div class="hero-overlay"></div>
-</section>
-<!--Seccion productos de la pagina de Inicio-->
-<section class="productos-preview">
-    <div class="productos-header">
-        <h2>Nuestros Productos</h2>
-        <p>Descubre nuestra selección de condimentos premium para elevar tus platillos</p>
-    </div>
-    
-    <div class="productos-grid" id="productos-preview-grid">
-        <!-- Los productos se cargarán dinámicamente aquí -->
-    </div>
-    
-    <div class="productos-cta">
-        <a href="/productos" class="ver-mas-btn">Ver Catálogo Completo</a>
-    </div>
-</section>
-<!--Seccion recetas de la pagina de Inicio-->
-<section class="recetas-preview">
-    <div class="recetas-header">
-        <h2>Nuestras Recetas</h2>
-        <p>Explora deliciosas recetas preparadas con nuestros condimentos</p>
-    </div>
-    
-    <div class="recetas-slider" id="recetas-preview-slider">
-        <!-- Las recetas se cargarán dinámicamente aquí -->
-    </div>
-    
-    <div class="recetas-cta">
-        <a href="/recetas" class="ver-mas-recetas">Explorar Más Recetas</a>
-    </div>
-</section>
-<!--Seccion nosotros de la pagina de Inicio-->
-<section class="nosotros-preview">
-    <div class="nosotros-container">
-        <div class="nosotros-content">
-            <h2>Sobre Nosotros</h2>
-            <p class="nosotros-description">"Nosotros somos la esencia de la cocina boliviana en cada frasco. Con nuestros condimentos, llevamos el auténtico sabor de Bolivia a tu mesa. Desde los sabores tradicionales hasta las creaciones más innovadoras, cada bocado es un viaje a través de nuestra rica herencia culinaria. Únete a nosotros y descubre cómo nuestras especias transforman tus platos en experiencias inolvidables, elevando tu cocina a nivel nacional."</p>
-            <a href="/nosotros" class="nosotros-btn">Conoce Más</a>
+        <div class="hero-image">
+            <img src="./img/img-inicio/img-main.png" alt="Especias Damabrava">
         </div>
-        <div class="nosotros-image">
-            <img src="./img/img-inicio/Nosotros-inicio.webp" alt="Damabrava Historia">
+        <div class="hero-overlay"></div>
+    </section>
+    <!--Seccion productos de la pagina de Inicio-->
+    <section class="productos-preview">
+        <div class="productos-header">
+            <h2>Nuestros Productos</h2>
+            <p>Descubre nuestra selección de condimentos premium para elevar tus platillos</p>
         </div>
-    </div>
-</section>
-<!--Seccion redes sociales-->
-<section class="social-preview">
-    <div class="social-container">
-        <h2>Síguenos en Redes</h2>
-        <p>Descubre más contenido exclusivo y mantente al día con nuestras novedades</p>
-        <div class="social-grid">
-            <a href="https://instagram.com/damabrava" class="social-card instagram">
-                <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
-                <p>@damabrava</p>
-            </a>
-            <a href="https://facebook.com/damabrava" class="social-card facebook">
-                <i class="fab fa-facebook-f"></i>
-                <span>Facebook</span>
-                <p>@damabrava</p>
-            </a>
-            <a href="https://youtube.com/damabrava" class="social-card youtube">
-                <i class="fab fa-youtube"></i>
-                <span>YouTube</span>
-                <p>Damabrava Oficial</p>
-            </a>
+
+        <div class="productos-grid" id="productos-preview-grid">
+            <div class="skeleton-producto-card">
+                <div class="skeleton-producto-imagen"></div>
+                <div class="skeleton-line titulo"></div>
+                <div class="skeleton-line gramos"></div>
+                <div class="skeleton-line precio"></div>
+                <div class="skeleton-ver-producto"></div>
+            </div>
+            <div class="skeleton-producto-card">
+                <div class="skeleton-producto-imagen"></div>
+                <div class="skeleton-line titulo"></div>
+                <div class="skeleton-line gramos"></div>
+                <div class="skeleton-line precio"></div>
+                <div class="skeleton-ver-producto"></div>
+            </div>
+            <div class="skeleton-producto-card">
+                <div class="skeleton-producto-imagen"></div>
+                <div class="skeleton-line titulo"></div>
+                <div class="skeleton-line gramos"></div>
+                <div class="skeleton-line precio"></div>
+                <div class="skeleton-ver-producto"></div>
+            </div>
         </div>
-    </div>
-</section>
-<!--Seccion consejos de cocina-->
-<section class="tips-preview">
-    <div class="tips-container">
-        <div class="tip-card active">
-            <div class="tip-icon">🌿</div>
-            <h3>Consejo del Día</h3>
-            <p id="tipText">Agrega las hierbas secas al principio de la cocción y las frescas al final para obtener el mejor sabor.</p>
+
+
+        <div class="productos-cta">
+            <a href="/productos" class="ver-mas-btn">Ver Catálogo Completo</a>
         </div>
+    </section>
+    <div class="separador-ajies">
+        <i class="fa-solid fa-pepper-hot"></i>
+        <i class="fa-solid fa-pepper-hot"></i>
+        <i class="fa-solid fa-pepper-hot"></i>
+        <i class="fa-solid fa-pepper-hot"></i>
+        <i class="fa-solid fa-pepper-hot"></i>
+        <i class="fa-solid fa-pepper-hot"></i>
     </div>
-</section>
-<%- include('partials/footer') %>
+
+    <!--Seccion recetas de la pagina de Inicio-->
+    <section class="recetas-preview">
+        <div class="recetas-header">
+            <h2>Nuestras Recetas</h2>
+            <p>Explora deliciosas recetas preparadas con nuestros condimentos</p>
+        </div>
+
+        <div class="recetas-slider" id="recetas-preview-slider">
+            <div class="skeleton-receta-card skeleton">
+                <div class="skeleton-receta-imagen">
+                    <div class="skeleton-receta-tiempo"></div>
+                </div>
+                <div class="skeleton-receta-contenido">
+                    <div class="skeleton-receta-titulo"></div>
+                    <div class="skeleton-receta-descripcion"></div>
+                    <div class="skeleton-receta-footer">
+                        <div class="skeleton-dificultad"></div>
+                        <div class="skeleton-ver-receta"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skeleton-receta-card skeleton">
+                <div class="skeleton-receta-imagen">
+                    <div class="skeleton-receta-tiempo"></div>
+                </div>
+                <div class="skeleton-receta-contenido">
+                    <div class="skeleton-receta-titulo"></div>
+                    <div class="skeleton-receta-descripcion"></div>
+                    <div class="skeleton-receta-footer">
+                        <div class="skeleton-dificultad"></div>
+                        <div class="skeleton-ver-receta"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skeleton-receta-card skeleton">
+                <div class="skeleton-receta-imagen">
+                    <div class="skeleton-receta-tiempo"></div>
+                </div>
+                <div class="skeleton-receta-contenido">
+                    <div class="skeleton-receta-titulo"></div>
+                    <div class="skeleton-receta-descripcion"></div>
+                    <div class="skeleton-receta-footer">
+                        <div class="skeleton-dificultad"></div>
+                        <div class="skeleton-ver-receta"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="recetas-cta">
+            <a href="/recetas" class="ver-mas-recetas">Explorar Más Recetas</a>
+        </div>
+    </section>
+    <!--Seccion nosotros de la pagina de Inicio-->
+    <section class="nosotros-preview">
+        <div class="nosotros-container">
+            <div class="nosotros-content">
+                <h2>Sobre Nosotros</h2>
+                <p class="nosotros-description">"Nosotros somos la esencia de la cocina boliviana en cada frasco. Con
+                    nuestros condimentos, llevamos el auténtico sabor de Bolivia a tu mesa. Desde los sabores
+                    tradicionales hasta las creaciones más innovadoras, cada bocado es un viaje a través de nuestra rica
+                    herencia culinaria. Únete a nosotros y descubre cómo nuestras especias transforman tus platos en
+                    experiencias inolvidables, elevando tu cocina a nivel nacional."</p>
+                <a href="/nosotros" class="nosotros-btn">Conoce Más</a>
+            </div>
+            <div class="nosotros-image">
+                <img src="./img/img-inicio/Nosotros-inicio.webp" alt="Damabrava Historia">
+            </div>
+        </div>
+    </section>
+    <!--Seccion redes sociales-->
+    <section class="social-preview">
+        <div class="social-container">
+            <h2>Síguenos en Redes</h2>
+            <p>Descubre más contenido exclusivo y mantente al día con nuestras novedades</p>
+            <div class="social-grid">
+                <a href="https://instagram.com/damabrava" class="social-card instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                    <p>@damabrava</p>
+                </a>
+                <a href="https://facebook.com/damabrava" class="social-card facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                    <p>@damabrava</p>
+                </a>
+                <a href="https://youtube.com/damabrava" class="social-card youtube" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                    <p>Damabrava Oficial</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!--Seccion consejos de cocina-->
+    <section class="tips-preview">
+        <div class="tips-container">
+            <div class="tip-card active">
+                <div class="tip-icon">🌿</div>
+                <h3>Consejo del Día</h3>
+                <p id="tipText">Agrega las hierbas secas al principio de la cocción y las frescas al final para obtener
+                    el mejor sabor.</p>
+            </div>
+        </div>
+    </section>
+    <script src="./js/inicio.js"></script>
+    <%- include('partials/footer') %>

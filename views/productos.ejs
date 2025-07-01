@@ -1,17 +1,74 @@
 <%- include('partials/header') %>
 
-<section class="productos-page">
-    <div class="productos-header">
-        <h1>Nuestros Productos</h1>
-        <p>Descubre nuestra selección premium de condimentos y especias</p>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Buscar productos...">
+    <section class="productos-page">
+        <div class="productos-header-ruta">
+            <h1>Nuestros Productos</h1>
+            <p>Descubre nuestra selección premium de condimentos y especias</p>
+            <div class="search-container" style="position:relative;">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Buscar productos...">
+                    <i id="clearSearch" class="fa-solid fa-xmark"></i>
+                    <div class="custom-select" id="customSelectEtiquetas">
+                        <div class="custom-select-selected">Todo</div>
+                        <div class="custom-select-options"></div>
+                    </div>
+                    <div id="sugerenciasProductos" class="sugerencias-autocomplete"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="productos-grid" id="productosContainer">
+            <div class="skeleton-producto-card">
+                <div class="skeleton-producto-imagen"></div>
+                <div class="skeleton-line titulo"></div>
+                <div class="skeleton-line gramos"></div>
+                <div class="skeleton-line precio"></div>
+                <div class="skeleton-ver-producto"></div>
+            </div>
+            <div class="skeleton-producto-card">
+                <div class="skeleton-producto-imagen"></div>
+                <div class="skeleton-line titulo"></div>
+                <div class="skeleton-line gramos"></div>
+                <div class="skeleton-line precio"></div>
+                <div class="skeleton-ver-producto"></div>
+            </div>
+            <div class="skeleton-producto-card">
+                <div class="skeleton-producto-imagen"></div>
+                <div class="skeleton-line titulo"></div>
+                <div class="skeleton-line gramos"></div>
+                <div class="skeleton-line precio"></div>
+                <div class="skeleton-ver-producto"></div>
+            </div>
+            <div class="skeleton-producto-card">
+                <div class="skeleton-producto-imagen"></div>
+                <div class="skeleton-line titulo"></div>
+                <div class="skeleton-line gramos"></div>
+                <div class="skeleton-line precio"></div>
+                <div class="skeleton-ver-producto"></div>
+            </div>
+        </div>
+        <p class="no-hay"><i class="fas fa-pepper-hot"></i> No hay productos disponibles</p>
+    </section>
+    <div id="carritoIcono">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="carritoContador">0</span>
+    </div>
+
+    <!-- Modal del carrito -->
+    <div id="carritoModal">
+        <div class="carrito-modal-contenido">
+            <button id="cerrarCarrito"><i class="fas fa-times"></i></button>
+            <h2>Mi Carrito</h2>
+            <div id="carritoItems"></div>
+            <div class="pie-carrito">
+                <div id="carritoTotal"></div>
+                <button id="hacerPedido">
+                    <i class="fab fa-whatsapp"></i> Hacer pedido
+                </button>
+
+            </div>
+
         </div>
     </div>
 
-    <div class="productos-grid" id="productosContainer">
-        <!-- Los productos se generarán dinámicamente con JavaScript -->
-    </div>
-</section>
-
-<%- include('partials/footer') %>
+    <%- include('partials/footer') %>

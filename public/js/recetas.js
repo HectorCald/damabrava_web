@@ -1,19 +1,3 @@
-/**
- * ====================================
- * PÁGINA DE RECETAS - CONTROLADOR
- * ====================================
- * 
- * Este archivo maneja la funcionalidad de la página de recetas, incluyendo:
- * - Carga dinámica de recetas desde la API
- * - Sistema de búsqueda y filtrado
- * - Visualización de recetas con animaciones
- */
-
-/**
- * ====================================
- * 1. INICIALIZACIÓN Y VARIABLES GLOBALES
- * ====================================
- */
 document.addEventListener('DOMContentLoaded', () => {
     const recetasContainer = document.getElementById('recetasContainer');
     const searchInput = document.getElementById('searchInput');
@@ -28,9 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     async function cargarRecetas() {
         try {
-            const response = await fetch('/api/recetas');
-            recetasData = await response.json();
-            mostrarRecetas(recetasData);
+            const response = await fetch('/obtener-recetas');
+            const data = await response.json();
+            if (data.success && Array.isArray(data.recetas)) {
+                recetasData = data.recetas;
+                mostrarRecetas(recetasData);
+            } else {
+                recetasData = [];
+                mostrarRecetas([]);
+            }
         } catch (error) {
             console.error('Error al cargar recetas:', error);
         }
@@ -44,25 +34,36 @@ document.addEventListener('DOMContentLoaded', () => {
     function mostrarRecetas(recetas) {
         recetasContainer.innerHTML = '';
         recetas.forEach((receta, index) => {
+            let tiempoTexto = '';
+            const minutos = parseInt(receta.tiempo, 10);
+            if (!isNaN(minutos)) {
+                if (minutos >= 60) {
+                    const horas = Math.floor(minutos / 60);
+                    const mins = minutos % 60;
+                    tiempoTexto = `${horas} hr${horas > 1 ? 's' : ''}${mins > 0 ? ' ' + mins + ' min' : ''}`;
+                } else {
+                    tiempoTexto = `${minutos} min`;
+                }
+            } else {
+                tiempoTexto = receta.tiempo || '';
+            }
             const delay = index * 0.1;
             const card = `
                 <div class="receta-card" style="animation-delay: ${delay}s">
                     <div class="receta-imagen">
                         <img src="${receta.imagen}" alt="${receta.nombre}">
                         <div class="receta-tiempo">
-                            <i class="far fa-clock"></i> 45 min
+                            <i class="far fa-clock"></i>
+                            <span>${tiempoTexto}</span>
                         </div>
                     </div>
-                    <div class="receta-info">
+                    <div class="receta-contenido">
                         <h3>${receta.nombre}</h3>
                         <p>${receta.descripcion}</p>
-                    </div>
-                    <div class="receta-footer">
-                        <span class="categoria">Receta</span>
-                        <a href="${receta.url}" target="_blank" class="ver-video-btn">
-                            <i class="fab fa-youtube"></i>
-                            Ver Video
-                        </a>
+                        <div class="receta-footer">
+                            <span class="dificultad">Nivel: <strong>${receta.dificultad}</strong></span>
+                            <a href="${receta.url}" class="ver-receta" target="_blank" >Ver Receta</a>
+                        </div>
                     </div>
                 </div>
             `;
@@ -105,3 +106,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicialización
     cargarRecetas();
 });
+

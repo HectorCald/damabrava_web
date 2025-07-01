@@ -1,0 +1,32 @@
+:root {
+    --text: black;
+    --fondo: rgba(149, 149, 149, 0.064);
+    --fondo2: #4fd0b623;
+    --fondo3: #ffffff;
+    --fondo4: rgba(149, 149, 149, 0.064);
+    --fondo5: #f3f3f3;
+    --sep-color: #28b498;
+    --oct-color: rgb(234, 234, 234);
+    --nov-color: #ffffff;
+    --primary-color: #ffffff;
+    --second-color: #1a1a1a;
+    --cero-color: rgb(216, 216, 216) !important;
+    --dec-color: #28b498;
+
+    /* Colores de acento que se mantienen en ambos temas */
+    --cuarto-color: #28b498;
+    --tercer-color: #28b498;
+    --error: #fc3737;
+    --success: #4CAF50;
+
+    /* Variables para tamaños de texto se mantienen igual */
+    --text-detalle: 13px;
+    --text-subtitulo: 15px;
+    --text-titulo: 16px;
+    --text-superior: 17px;
+    --text-xl: 18px;
+    --text-2xl: 20px;
+    --text-3xl: 24px;
+    --text-4xl: 26px;
+    --text-5xl: 28px;
+}

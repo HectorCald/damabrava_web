@@ -18,15 +18,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    const loginBtn = document.querySelector('.login-btn');
-    const loginModal = document.querySelector('.login-modal');
-    const closeModal = document.querySelector('.close-modal');
 
     initializeHamburgerMenu(hamburger, navMenu);
-    initializeLoginModal(loginBtn, loginModal, closeModal);
     initializeScrollAnimation();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.nav-link');
+    const path = window.location.pathname.replace(/\/$/, ''); // sin slash final
 
+    links.forEach(link => {
+        // Obtén el href relativo (sin dominio)
+        const href = link.getAttribute('href').replace(/\/$/, '');
+        // Marca como activo si coincide la ruta
+        if (href === path || (href === '' && path === '')) {
+            link.classList.add('active');
+        }
+    });
+});
 /**
  * ====================================
  * 2. FUNCIONES DE NAVEGACIÓN
@@ -62,9 +70,23 @@ function initializeLoginModal(loginBtn, loginModal, closeModal) {
 function initializeScrollAnimation() {
     let lastScroll = 0;
     const header = document.querySelector('.header');
+    // Detecta si NO es inicio
+    const noEsInicio = !window.location.pathname.endsWith('/') &&
+        !window.location.pathname.endsWith('/inicio') &&
+        !window.location.pathname.endsWith('/inicio/');
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
+        const productosPreview = document.querySelector('.productos-preview');
+        const productosRect = productosPreview?.getBoundingClientRect();
+
+        if (noEsInicio) {
+            header.style.backgroundColor = '#1a1a1a'; // Siempre oscuro fuera de inicio
+        } else if (productosRect && header.getBoundingClientRect().bottom >= productosRect.top) {
+            header.style.backgroundColor = '#1a1a1a'; // Oscuro cuando toca productos-preview
+        } else {
+            header.style.backgroundColor = ''; // Vuelve al color original solo en inicio
+        }
 
         if (currentScroll <= 0) {
             header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
@@ -81,49 +103,10 @@ function initializeScrollAnimation() {
         lastScroll = currentScroll;
     });
 }
-
-/**
- * ====================================
- * 3. AUTENTICACIÓN DE USUARIOS
- * ====================================
- */
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('loginForm');
-    const loginMessage = document.getElementById('loginMessage');
-    const loginModal = document.querySelector('.login-modal');
-
-    initializeLoginForm(loginForm, loginMessage);
+    const header = document.querySelector('.header');
+    // Si la URL no es la de inicio, aplica color oscuro al header
+    if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('/inicio') && !window.location.pathname.endsWith('/inicio/')) {
+        header.style.backgroundColor = '#1a1a1a';
+    }
 });
-
-// Manejo del formulario de login
-function initializeLoginForm(loginForm, loginMessage) {
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(loginForm);
-        const credentials = {
-            username: formData.get('username'),
-            password: formData.get('password')
-        };
-
-        try {
-            const response = await fetch('/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(credentials)
-            });
-
-            if (response.ok) {
-                window.location.href = '/adm';
-            } else {
-                loginMessage.textContent = 'Credenciales inválidas';
-                loginMessage.style.color = '#e31837';
-            }
-        } catch (error) {
-            loginMessage.textContent = 'Error de conexión';
-            loginMessage.style.color = '#e31837';
-        }
-    });
-}

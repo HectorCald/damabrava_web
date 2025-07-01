@@ -9,6 +9,8 @@
     overflow: hidden;
     font-family: 'Arial', sans-serif;
     box-sizing: border-box;
+    border: none !important;
+    width: 100%;
 }
 
 /* ====== ESTRUCTURA DEL CONTENIDO ====== */
@@ -71,7 +73,7 @@
 }
 
 .footer-links li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 /* Estilo y animación de los enlaces */

@@ -1,56 +1,60 @@
 /* ====== CONFIGURACIÓN GENERAL DE LA PÁGINA ====== */
 /* Ajuste del espaciado superior para evitar superposición con el header fijo */
 .nosotros-page {
-    padding-top: 80px;
+    padding-top: 10px;
 }
 
 /* ====== ENCABEZADO PRINCIPAL ====== */
 /* Sección de banner con fondo oscuro y texto centrado */
 .nosotros-header {
     text-align: center;
-    padding: 4rem 2rem;
+    padding-bottom: 1.5rem;
+    padding-top: 55px;
     background: #1a1a1a;
     color: white;
 }
 
 /* Título principal del encabezado */
 .nosotros-header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
 }
 
 /* Subtítulo o descripción del encabezado */
 .nosotros-header p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     opacity: 0.9;
+    color: gray;
 }
 
 /* ====== SECCIÓN DE HISTORIA ====== */
 /* Contenedor de la sección histórica con fondo claro */
 .historia-section {
     padding: 5rem 2rem;
-    background: #ffffff;
+    background: #f9f9f9;
 }
 
 /* Grid para contenido dividido en dos columnas */
 .content-container {
     max-width: 1200px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 5rem;
     align-items: center;
+    margin: 0 auto;
 }
-
+.text-content{
+    width: 100%;
+    padding: 1rem;
+}
 /* Estilos para el contenido textual */
 .text-content h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #1a1a1a;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .text-content p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.8;
     color: #666;
 }
@@ -58,35 +62,64 @@
 /* Estilos para las imágenes */
 .image-content img {
     width: 100%;
+    height: auto;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* ====== SECCIÓN DE MISIÓN Y VISIÓN ====== */
 /* Contenedor con fondo gris claro */
 .mision-vision-section {
     padding: 5rem 2rem;
-    background: #f9f9f9;
-}
+    background: linear-gradient(to right, #1a1a1a 50%, #282828 50%);
+  }
+  
 
 /* Cajas de misión y visión con efectos hover */
 .mision-box, .vision-box {
     padding: 2rem;
-    background: white;
+    background: none;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    min-height: 250px;
+    height: 250px;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
 }
-
-/* Efecto de elevación al pasar el mouse */
-.mision-box:hover, .vision-box:hover {
-    transform: translateY(-5px);
+.mision-vision-content{
+    display: flex;
+    gap: 1rem;
 }
 
 /* Títulos de misión y visión */
 .mision-box h2, .vision-box h2 {
+    color: white;
+    border-bottom: 4px solid #e31837;
+    font-size:1.5rem;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+.mision-box p, .vision-box p {
+    color: var(--second-color);
+    font-size:0.9rem;
+    color: white;
+}
+.mision-box i, .vision-box i {
+    font-size: 2rem;
     color: #e31837;
-    margin-bottom: 1rem;
+}
+.mision-vision-title{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    transition: all 0.5s ease;
+
 }
 
 /* ====== SECCIÓN DE VALORES ====== */
@@ -99,10 +132,11 @@
 
 /* Título de la sección */
 .valores-section h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #1a1a1a;
     margin-bottom: 3rem;
 }
+
 
 /* Grid responsivo para tarjetas de valores */
 .valores-grid {
@@ -125,6 +159,10 @@
 /* Efecto hover en las tarjetas */
 .valor-card:hover {
     transform: translateY(-10px);
+
+    i{
+        transform: scale(1.5) !important;
+    }
 }
 
 /* Iconos en las tarjetas */
@@ -143,6 +181,7 @@
 /* Texto descriptivo de las tarjetas */
 .valor-card p {
     color: #666;
+    font-size: 0.9rem;
 }
 
 /* ====== DISEÑO RESPONSIVO ====== */
@@ -150,31 +189,39 @@
 @media (max-width: 968px) {
     .content-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1rem;
     }
 
     .image-content {
         order: -1;
+        margin: 0;
     }
 
     .nosotros-header h1 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
+    }
+    .nosotros-header p {
+        font-size: 0.9rem;
     }
 }
 
 /* Ajustes para móviles */
 @media (max-width: 768px) {
-    .nosotros-header {
-        padding: 3rem 1rem;
-    }
+
 
     .historia-section,
     .mision-vision-section,
     .valores-section {
         padding: 3rem 1rem;
     }
+    .mision-vision-section{
+        background: linear-gradient(to top, #1a1a1a 50%, #282828 50%);
+    }
 
     .text-content h2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
+    }
+    .text-content p {
+        font-size: 0.9rem;
     }
 }
