@@ -360,7 +360,7 @@ async function renderProductosPreview(productos) {
                 ${cantidadBtnsHTML}
                 ${precioHTML}
                 <p>${producto.cantidadxgrupo !== '1' ? producto.cantidadxgrupo + ' unidades por tira' : ''} </p>
-                <a href="#" class="ver-producto">Ver Producto</a>
+                <a href="/productos" class="ver-producto">Ver Producto</a>
             </div>
         `;
     }
